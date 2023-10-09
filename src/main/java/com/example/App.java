@@ -24,11 +24,14 @@ public class App
             BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
             
-            String risposta = in.readLine();
+            String risposta = "";
+            while(risposta != "q"){
+            risposta = in.readLine();
             System.out.println("il client ha inviato: " + risposta);
 
             String stringaModificata = risposta.toUpperCase();
             out.writeBytes(stringaModificata + "\n");
+            }
             server.close();
             s.close();
 
